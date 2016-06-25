@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 19 mai 2016 02:33:50 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class catalog="gestionnote" name="project.model.Matiere" table="matiere">
+    <id name="id" type="java.lang.Integer">
+      <column name="id"/>
+      <generator class="identity"/>
+    </id>
+    <many-to-one class="project.model.Enseignant" fetch="select" name="enseignant">
+      <column name="idEnseignant" not-null="true" unique="true"/>
+    </many-to-one>
+    <many-to-one class="project.model.Groupe" fetch="select" name="groupe">
+      <column name="idGroupe" not-null="true" unique="true"/>
+    </many-to-one>
+    <property name="libelle" type="string">
+      <column length="50" name="libelle" not-null="true"/>
+    </property>
+    <property name="volumeCour" type="float">
+      <column name="volumeCour" not-null="true" precision="12" scale="0"/>
+    </property>
+    <property name="volumeTp" type="float">
+      <column name="VolumeTp" not-null="true" precision="12" scale="0"/>
+    </property>
+    <property name="volumeTd" type="float">
+      <column name="volumeTd" not-null="true" precision="12" scale="0"/>
+    </property>
+    <property name="coefficient" type="float">
+      <column name="coefficient" not-null="true" precision="12" scale="0"/>
+    </property>
+    <property name="credit" type="int">
+      <column name="credit" not-null="true"/>
+    </property>
+    <set inverse="true" name="notes">
+      <key>
+        <column name="idMatiere" not-null="true"/>
+      </key>
+      <one-to-many class="project.model.Note"/>
+    </set>
+  </class>
+</hibernate-mapping>

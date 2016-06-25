@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 19 mai 2016 02:33:50 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class catalog="gestionnote" name="project.model.Note" table="note">
+    <id name="id" type="java.lang.Integer">
+      <column name="id"/>
+      <generator class="identity"/>
+    </id>
+    <many-to-one class="project.model.Session" fetch="select" name="session">
+      <column name="idSession" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="project.model.Matiere" fetch="select" name="matiere">
+      <column name="idMatiere" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="project.model.Etudiant" fetch="select" name="etudiant">
+      <column name="idEtudiant" not-null="true" unique="true"/>
+    </many-to-one>
+    <property name="noteTp" type="float">
+      <column name="noteTP" not-null="true" precision="12" scale="0"/>
+    </property>
+    <property name="noteDs" type="float">
+      <column name="noteDS" not-null="true" precision="12" scale="0"/>
+    </property>
+    <property name="noteExam" type="float">
+      <column name="noteExam" not-null="true" precision="12" scale="0"/>
+    </property>
+    <property name="notePresence" type="float">
+      <column name="notePresence" not-null="true" precision="12" scale="0"/>
+    </property>
+    <property name="numCompostage" type="int">
+      <column name="numCompostage" not-null="true"/>
+    </property>
+  </class>
+</hibernate-mapping>
